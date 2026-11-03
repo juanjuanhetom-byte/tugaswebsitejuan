@@ -70,7 +70,7 @@
 <body>
   <header>
     <div class="brand"><strong>SIBORU</strong><span>Sistem Booking Ruangan</span></div>
-    <p>Pratinjau tampilan ponsel (390 × 844) untuk <strong>siboru.idbbali.ac.id</strong>. Aplikasi SIBORU adalah satu situs responsif — bingkai ini hanya untuk demonstrasi di laptop/PC. Gunakan <code>?site=URL</code> untuk mengarahkan ke alamat lain.</p>
+    <p>Pratinjau tampilan ponsel (390 × 844). Aplikasi SIBORU adalah satu situs responsif — bingkai ini hanya untuk demonstrasi di laptop/PC. Gunakan <code>?site=URL</code> untuk mengarahkan ke alamat lain.</p>
   </header>
 
   <div class="toolbar" id="tabs">
@@ -92,7 +92,7 @@
   <script>
     (function () {
       var q = new URLSearchParams(location.search);
-      var SITE = q.get("site") || "https://siboru.idbbali.ac.id/";
+      var SITE = q.get("site") || (location.origin + "/");
       var page = q.get("p") || "index.html";
       var size = Number(q.get("w") || 390);
       var phone = document.getElementById("phone");
