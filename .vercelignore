@@ -1,0 +1,18 @@
+# Berkas yang TIDAK perlu diunggah ke Vercel (situs statis)
+# Backend Express (server.js) hanya untuk dijalankan lokal / di server sendiri.
+server.js
+server.ps1
+package.json
+package-lock.json
+
+# Alat pengembangan & dokumentasi
+tools/
+README.md
+_mobile-test.html
+.gitignore
+.vercelignore
+
+# Berkas sistem / editor
+.DS_Store
+Thumbs.db
+*.log
