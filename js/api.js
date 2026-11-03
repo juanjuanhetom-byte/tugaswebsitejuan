@@ -7,7 +7,29 @@
 
 const API_BASE = "/api";
 
+/* Host tanpa backend Express (Vercel/Netlify/GitHub Pages/here.now):
+   langsung pakai mode offline agar tidak ada request /api yang gagal.
+   Paksa mode online dengan menambahkan ?online=1 pada URL. */
+const STATIC_HOSTS = ["vercel.app", "netlify.app", "github.io", "pages.dev", "here.now"];
+const API_DISABLED =
+  typeof location !== "undefined" &&
+  STATIC_HOSTS.some(
+    (h) => location.hostname === h || location.hostname.endsWith("." + h)
+  ) &&
+  !/(^|[?&])online(=|&|$)/.test(location.search);
+
 async function apiRequest(path, { method = "GET", body } = {}) {
+  if (API_DISABLED) {
+    return {
+      ok: false,
+      httpStatus: 0,
+      status: "error",
+      message: "Mode offline (situs statis) — data disimpan di perangkat ini.",
+      data: null,
+      conflict: null,
+      networkError: true,
+    };
+  }
   try {
     const res = await fetch(API_BASE + path, {
       method,
