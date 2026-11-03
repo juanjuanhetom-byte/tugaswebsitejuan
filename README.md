@@ -358,6 +358,29 @@ Aplikasi dapat diakses dari ponsel dengan tata letak yang disesuaikan — bukan 
 
 **Verifikasi lebar layar** (iframe 320×640, 360×780, 390×844): **tidak ada scroll horizontal** di halaman login, katalog, dashboard, pemesanan, ruangan, maupun pengguna. Pengujian cepat bisa memakai `_mobile-test.html?p=catalog.html` (file bantu lokal, tidak ikut dipublikasikan).
 
+## Deploy di Vercel
+
+| Item | Nilai |
+| ---- | ----- |
+| URL produksi | **https://tugaswebsitejuan.vercel.app/** |
+| Pratinjau mobile | https://tugaswebsitejuan.vercel.app/mobile.html |
+| Repo | https://github.com/juanjuanhetom-byte/tugaswebsitejuan |
+
+**Masalah awal:** Vercel mendeteksi `package.json` + `server.js` (Express) lalu memperlakukan proyek sebagai aplikasi Node. Setiap request memanggil function yang gagal → `500 FUNCTION_INVOCATION_FAILED` di semua URL.
+
+**Perbaikan:**
+
+| Berkas | Fungsi |
+| ------ | ------ |
+| `vercel.json` | `"framework": null`, `buildCommand`/`installCommand` kosong, `"outputDirectory": "."` → Vercel menyajikan repo sebagai **static site** (tanpa function). Ditambah header cache: HTML `must-revalidate`, CSS/JS `max-age=0, must-revalidate`, gambar/media `immutable`, serta `X-Robots-Tag: noindex` untuk `/admin` |
+| `.vercelignore` | `server.js`, `server.ps1`, `package.json`, `tools/`, `README.md`, `_mobile-test.html` **tidak** diunggah — backend & berkas internal tidak bisa diakses publik |
+| `js/api.js` | Pada host statis (`vercel.app`, `netlify.app`, `github.io`, `pages.dev`, `here.now`) client langsung memakai mode offline → **tidak ada request `/api/*` yang gagal**. Paksa mode API dengan `?online=1` |
+| `index.html`, `catalog.html`, `admin.html` | Aset diberi versi (`?v=20261103`) agar perubahan CSS/JS langsung terpakai |
+
+**Verifikasi di Vercel:** login mahasiswa → katalog 9 ruangan, gambar & video termuat, riwayat 3 pengajuan (1 menunggu/1 disetujui/1 ditolak), **0 request gagal**; login admin → dashboard 7 pemesanan (2/4/1) tanpa error; guard peran (`/admin.html` tanpa sesi → halaman login) berfungsi; `mobile.html` menampilkan pratinjau 390×844 dengan iframe ke origin yang sama.
+
+> Catatan: aplikasi ini memakai `localStorage`, jadi data peminjaman bersifat **per-perangkat/per-browser**, tidak tersinkron antar pengguna. Untuk data terpusat, jalankan `server.js` (Express + SQLite) di host yang mendukung Node, lalu akses dengan `?online=1`.
+
 ## Publikasi (here.now) & Agar Ditemukan di Google
 
 > **Status per 3 Nov 2026:** situs demo anonim di bawah sudah **kedaluwarsa** (here.now anonim hanya aktif 24 jam). Berkas proyek tetap lengkap dan siap diterbitkan ulang kapan saja — lihat *Menerbitkan ulang* di bawah.
