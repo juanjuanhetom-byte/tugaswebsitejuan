@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katalog Ruangan • SIBORU — Sistem Booking Ruangan</title>
+  <meta name="description" content="Katalog 9 ruangan IDB Bali di SIBORU — laboratorium, studio, ruang kelas, aula, dan area publik. Lihat ketersediaan, ajukan peminjaman, dan pantau status pengajuan." />
+  <meta name="keywords" content="SIBORU, katalog ruangan IDB Bali, booking lab komputer, peminjaman aula IDB Bali, sistem booking ruangan" />
+  <meta name="application-name" content="SIBORU" />
+  <meta name="theme-color" content="#0b2545" />
+  <link rel="canonical" href="https://siboru.idbbali.ac.id/catalog.html" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SIBORU" />
+  <meta property="og:title" content="Katalog Ruangan — SIBORU" />
+  <meta property="og:description" content="Lihat ketersediaan ruangan IDB Bali dan ajukan peminjaman langsung dari SIBORU." />
+  <meta property="og:url" content="https://siboru.idbbali.ac.id/catalog.html" />
+  <meta property="og:image" content="https://siboru.idbbali.ac.id/images/hero-visit-kampus.jpg" />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "SIBORU", "item": "https://siboru.idbbali.ac.id/" },
+      { "@type": "ListItem", "position": 2, "name": "Katalog Ruangan", "item": "https://siboru.idbbali.ac.id/catalog.html" }
+    ]
+  }
+  </script>
+  <link rel="icon" type="image/png" href="images/logo-idb-transparent.png" />
+  <link rel="apple-touch-icon" href="images/logo-idb.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="app-body">
+
+  <!-- ============ TOP NAVBAR ============ -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a class="navbar__brand" href="catalog.html">
+        <img class="brand-mark__logo-img brand-mark__logo-img--sm" src="images/logo-idb.png" alt="Logo IDB Bali" />
+        <div class="brand-mark__text">
+          <strong>SIBORU</strong>
+          <span>Sistem Booking Ruangan</span>
+        </div>
+      </a>
+
+      <div class="navbar__actions">
+        <div class="user-chip">
+          <div class="user-chip__avatar" id="userAvatar">M</div>
+          <div class="user-chip__info">
+            <strong id="userName">—</strong>
+            <span class="role-badge" id="userRole">—</span>
+          </div>
+        </div>
+        <button class="btn btn--ghost" id="historyBtn" type="button">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <polyline points="12 7 12 12 15.5 13.5"></polyline>
+          </svg>
+          <span>Riwayat Saya</span>
+        </button>
+        <button class="btn btn--ghost" id="adminPanelBtn" type="button" hidden>
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Panel Admin</span>
+        </button>
+        <button class="btn btn--ghost" id="logoutBtn" type="button">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Keluar</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="page-hero">
+    <!-- Background cinematic: foto resmi kampus (halaman visit) + video 6 detik -->
+    <img class="page-hero__bg" src="images/hero-visit-kampus.jpg" alt="" aria-hidden="true" onerror="this.remove()" />
+    <video class="page-hero__bg page-hero__bg--video" src="media/hero-katalog-6detik.mp4"
+           poster="images/hero-visit-kampus.jpg" autoplay muted loop playsinline
+           aria-hidden="true" onerror="this.remove()"></video>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <div>
+        <span class="page-hero__eyebrow">SIBORU &middot; Katalog Fasilitas Kampus</span>
+        <h1 id="greetingTitle">Halo, Mahasiswa 👋</h1>
+        <p>Pilih ruangan yang ingin Anda pesan untuk perkuliahan, produksi, atau kegiatan kampus.</p>
+      </div>
+      <figure class="page-hero__photo">
+        <img src="images/mahasiswa.jpg" alt="Mahasiswa IDB Bali" onerror="this.closest('figure').remove()" />
+        <figcaption>Mahasiswa IDB Bali</figcaption>
+      </figure>
+      <div class="page-hero__stats">
+        <div class="stat-card">
+          <strong id="statTotal">0</strong>
+          <span>Total Ruangan</span>
+        </div>
+        <div class="stat-card stat-card--ok">
+          <strong id="statAvailable">0</strong>
+          <span>Tersedia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="page-main">
+
+    <!-- Toolbar: search + filters -->
+    <div class="toolbar">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" id="searchInput" placeholder="Cari nama ruangan…" aria-label="Cari ruangan" />
+      </div>
+
+      <div class="filter-tabs" id="filterTabs" role="tablist" aria-label="Filter kategori">
+        <button class="filter-tab is-active" data-category="all" role="tab" aria-selected="true">Semua</button>
+        <button class="filter-tab" data-category="Lab &amp; Studio" role="tab" aria-selected="false">Lab &amp; Studio</button>
+        <button class="filter-tab" data-category="Classroom" role="tab" aria-selected="false">Classroom</button>
+        <button class="filter-tab" data-category="Public Area" role="tab" aria-selected="false">Public Area</button>
+      </div>
+    </div>
+
+    <!-- Section label -->
+    <div class="section-head">
+      <h2 id="gridTitle">Semua Ruangan</h2>
+      <span class="result-count" id="resultCount"></span>
+      <span class="date-caption" id="dateCaption"></span>
+    </div>
+
+    <!-- Room grid -->
+    <section class="room-grid" id="roomGrid" aria-live="polite"></section>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState" hidden>
+      <div class="empty-state__icon">🔍</div>
+      <h3 id="emptyTitle">Ruangan tidak ditemukan</h3>
+      <p id="emptyText">Coba kata kunci lain atau pilih kategori “Semua”.</p>
+    </div>
+  </main>
+
+  <!-- ============ BOOKING MODAL (Task 2) ============ -->
+  <div class="modal-backdrop" id="bookingModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalRoomName">
+
+      <!-- Modal header -->
+      <header class="modal__head">
+        <div class="modal__room">
+          <span class="modal__room-icon" id="modalRoomIcon">🏫</span>
+          <div class="modal__room-text">
+            <span class="modal__eyebrow">Pengajuan Peminjaman Ruangan</span>
+            <h3 id="modalRoomName">—</h3>
+            <span class="modal__room-sub" id="modalRoomSub">—</span>
+          </div>
+        </div>
+        <button type="button" class="modal__close" id="modalClose" aria-label="Tutup modal">✕</button>
+      </header>
+
+      <!-- VIEW 1: FORM PEMESANAN -->
+      <div class="modal__body" id="bookingFormView">
+
+        <div class="form-alert" id="bookingAlert" role="alert" aria-live="assertive" hidden>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="bookingAlertText"></span>
+        </div>
+
+        <form id="bookingForm" novalidate>
+          <div class="bf-grid">
+
+            <div class="field">
+              <label for="bookDate">Tanggal Pemesanan</label>
+              <input type="date" id="bookDate" required />
+              <p class="field-error" id="dateError" hidden>
+                Ruang Kelas Reguler hanya dapat digunakan pada hari Sabtu dan Minggu untuk sesi non-perkuliahan.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="bookPurpose">Kepentingan / Keperluan</label>
+              <select id="bookPurpose" required>
+                <option value="">Pilih keperluan…</option>
+                <option value="Bimbingan">Bimbingan</option>
+                <option value="Diskusi Ide/Bisnis">Diskusi Ide/Bisnis</option>
+                <option value="Keperluan Organisasi BEM/HMJ">Keperluan Organisasi BEM/HMJ</option>
+                <option value="Kelas Tambahan">Kelas Tambahan</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="bookStart">Jam Mulai</label>
+              <input type="time" id="bookStart" step="300" required />
+            </div>
+
+            <div class="field">
+              <label for="bookEnd">Jam Selesai</label>
+              <input type="time" id="bookEnd" step="300" required />
+            </div>
+
+            <div class="field field--full">
+              <label for="bookSender">Atas Nama Pengirim</label>
+              <input type="text" id="bookSender"
+                     placeholder="Nama individu / organisasi (contoh: Rina P. / BEM IDB)" required />
+              <p class="field-hint">Isi dengan nama pribadi (mahasiswa/dosen) atau nama organisasi (BEM/HMJ).</p>
+            </div>
+
+          </div>
+
+          <!-- Peringatan bentrok (prominent) -->
+          <div class="conflict-box" id="conflictBox" hidden>
+            <span class="conflict-badge">⚠ FULL / BENTROK</span>
+            <p class="conflict-box__text" id="conflictText"></p>
+            <ul class="conflict-box__list" id="conflictList"></ul>
+          </div>
+        </form>
+
+        <footer class="modal__foot">
+          <button type="button" class="btn btn--outline" id="cancelBooking">Batal</button>
+          <button type="submit" form="bookingForm" class="btn btn--gold" id="confirmBooking">
+            Ajukan Peminjaman
+          </button>
+        </footer>
+      </div>
+
+      <!-- VIEW 2: BUKTI PENGAJUAN / PEMESANAN -->
+      <div class="modal__body receipt" id="receiptView" hidden>
+        <div class="receipt__icon" id="receiptIcon">✓</div>
+        <h3 class="receipt__title" id="receiptTitle">Pengajuan Terkirim!</h3>
+        <p class="receipt__sub" id="receiptSub">
+          Permintaan peminjaman Anda menunggu persetujuan admin.
+        </p>
+        <div class="receipt__id" id="receiptId">—</div>
+        <dl class="receipt__details" id="receiptDetails"></dl>
+
+        <p class="receipt__note" id="receiptNote" hidden>
+          ⏳ Pengajuan belum disetujui — unduhan struk &amp; berbagi ke WhatsApp baru tersedia
+          setelah admin menyetujui peminjaman Anda.
+        </p>
+
+        <div class="receipt__actions" id="receiptActions">
+          <button type="button" class="btn btn--outline" id="receiptDownload">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Unduh Struk (PNG)
+          </button>
+          <button type="button" class="btn btn--wa" id="receiptWhatsapp">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            </svg>
+            Bagikan ke WhatsApp
+          </button>
+        </div>
+
+        <button type="button" class="btn btn--outline btn--block" id="receiptHistoryBtn" hidden>
+          Lihat Riwayat Peminjaman
+        </button>
+        <button type="button" class="btn btn--primary btn--block" id="receiptClose">Selesai</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ MODAL: RIWAYAT PEMINJAMAN (Task 5) ============ -->
+  <div class="modal-backdrop" id="historyModal" hidden>
+    <div class="modal modal--wide" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+      <header class="modal__head">
+        <div class="modal__room">
+          <span class="modal__room-icon">📒</span>
+          <div class="modal__room-text">
+            <span class="modal__eyebrow">Pengajuan &amp; Peminjaman Saya</span>
+            <h3 id="historyTitle">Riwayat Peminjaman</h3>
+            <span class="modal__room-sub" id="historySummary">—</span>
+          </div>
+        </div>
+        <button type="button" class="modal__close" id="historyClose" aria-label="Tutup modal">✕</button>
+      </header>
+
+      <div class="modal__body">
+        <div class="chip-row" id="historyChips">
+          <button type="button" class="f-chip is-active" data-hstatus="all">Semua</button>
+          <button type="button" class="f-chip f-chip--pending" data-hstatus="pending">⏳ Menunggu</button>
+          <button type="button" class="f-chip f-chip--approved" data-hstatus="approved">✅ Disetujui</button>
+          <button type="button" class="f-chip f-chip--rejected" data-hstatus="rejected">❌ Ditolak</button>
+        </div>
+
+        <div class="history-list" id="historyList" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <p>&copy; 2026 Institut Desain &amp; Bisnis (IDB) Bali &mdash; SIBORU (Sistem Booking Ruangan)</p>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/rooms.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>

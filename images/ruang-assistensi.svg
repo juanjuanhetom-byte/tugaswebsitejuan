@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Ruang Assistensi">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c4a6e"/><stop offset="1" stop-color="#7dd3fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect y="330" width="800" height="120" fill="#082f49" opacity=".45"/>
+  <!-- meja bundar diskusi -->
+  <ellipse cx="400" cy="285" rx="185" ry="72" fill="#f0f9ff"/>
+  <ellipse cx="400" cy="272" rx="185" ry="72" fill="#e0f2fe"/>
+  <ellipse cx="400" cy="272" rx="120" ry="44" fill="#bae6fd" opacity=".7"/>
+  <!-- kursi -->
+  <g fill="#0ea5e9">
+    <rect x="180" y="200" width="86" height="52" rx="18"/>
+    <rect x="534" y="200" width="86" height="52" rx="18"/>
+    <rect x="238" y="330" width="86" height="52" rx="18"/>
+    <rect x="476" y="330" width="86" height="52" rx="18"/>
+  </g>
+  <!-- laptop di meja -->
+  <g>
+    <rect x="368" y="240" width="64" height="40" rx="5" fill="#0b2545"/>
+    <rect x="374" y="246" width="52" height="28" rx="3" fill="#38bdf8"/>
+    <rect x="356" y="280" width="88" height="8" rx="4" fill="#0369a1"/>
+  </g>
+  <!-- gelembung ide -->
+  <g>
+    <rect x="120" y="70" width="180" height="96" rx="20" fill="#ffffff" opacity=".92"/>
+    <path d="M170 162 l18 34 l14 -34 z" fill="#ffffff" opacity=".92"/>
+    <g stroke="#0ea5e9" stroke-width="7" stroke-linecap="round" opacity=".9">
+      <path d="M148 100 h120"/><path d="M148 124 h88"/>
+    </g>
+    <rect x="530" y="66" width="150" height="84" rx="18" fill="#fef08a" opacity=".95"/>
+    <path d="M636 146 l16 32 l13 -32 z" fill="#fef08a" opacity=".95"/>
+    <text x="605" y="124" text-anchor="middle" font-size="44" font-family="Segoe UI Emoji, 'Apple Color Emoji', sans-serif">💡</text>
+  </g>
+  <text x="772" y="430" text-anchor="end" font-size="84" font-family="Segoe UI Emoji, 'Apple Color Emoji', sans-serif" opacity=".18">💬</text>
+</svg>

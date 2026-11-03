@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Gedung Serba Guna">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#78350f"/><stop offset="1" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffbeb"/><stop offset="1" stop-color="#fcd34d"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="120" cy="80" r="46" fill="#fde68a" opacity=".65"/>
+  <rect y="360" width="800" height="90" fill="#451a03" opacity=".55"/>
+  <!-- gedung utama bertingkat -->
+  <rect x="200" y="70" width="400" height="290" rx="8" fill="url(#bld)"/>
+  <rect x="200" y="70" width="400" height="26" rx="8" fill="#d97706"/>
+  <!-- deretan jendela -->
+  <g fill="#0b2545" opacity=".8">
+    <rect x="228" y="118" width="56" height="42" rx="4"/><rect x="304" y="118" width="56" height="42" rx="4"/><rect x="380" y="118" width="56" height="42" rx="4"/><rect x="456" y="118" width="56" height="42" rx="4"/><rect x="532" y="118" width="40" height="42" rx="4"/>
+    <rect x="228" y="180" width="56" height="42" rx="4"/><rect x="304" y="180" width="56" height="42" rx="4"/><rect x="380" y="180" width="56" height="42" rx="4"/><rect x="456" y="180" width="56" height="42" rx="4"/><rect x="532" y="180" width="40" height="42" rx="4"/>
+    <rect x="228" y="242" width="56" height="42" rx="4"/><rect x="304" y="242" width="56" height="42" rx="4"/><rect x="456" y="242" width="56" height="42" rx="4"/><rect x="532" y="242" width="40" height="42" rx="4"/>
+  </g>
+  <!-- pintu masuk & kanopi -->
+  <rect x="380" y="242" width="56" height="76" rx="4" fill="#92400e"/>
+  <rect x="352" y="318" width="112" height="12" rx="6" fill="#b45309"/>
+  <!-- sayap gedung -->
+  <rect x="90" y="180" width="110" height="180" rx="6" fill="#fde68a"/>
+  <rect x="600" y="150" width="110" height="210" rx="6" fill="#fde68a"/>
+  <g fill="#0b2545" opacity=".7">
+    <rect x="110" y="204" width="30" height="34" rx="3"/><rect x="150" y="204" width="30" height="34" rx="3"/>
+    <rect x="110" y="256" width="30" height="34" rx="3"/><rect x="150" y="256" width="30" height="34" rx="3"/>
+    <rect x="620" y="176" width="30" height="34" rx="3"/><rect x="660" y="176" width="30" height="34" rx="3"/>
+    <rect x="620" y="228" width="30" height="34" rx="3"/><rect x="660" y="228" width="30" height="34" rx="3"/>
+    <rect x="620" y="280" width="30" height="34" rx="3"/><rect x="660" y="280" width="30" height="34" rx="3"/>
+  </g>
+  <!-- area parkir -->
+  <g>
+    <rect x="80" y="386" width="96" height="30" rx="9" fill="#fef3c7"/>
+    <rect x="94" y="374" width="56" height="20" rx="7" fill="#f59e0b"/>
+    <circle cx="104" cy="416" r="9" fill="#78350f"/><circle cx="152" cy="416" r="9" fill="#78350f"/>
+    <rect x="220" y="386" width="96" height="30" rx="9" fill="#fef3c7"/>
+    <rect x="234" y="374" width="56" height="20" rx="7" fill="#f59e0b"/>
+    <circle cx="244" cy="416" r="9" fill="#78350f"/><circle cx="292" cy="416" r="9" fill="#78350f"/>
+  </g>
+  <text x="772" y="130" text-anchor="end" font-size="88" font-family="Segoe UI Emoji, 'Apple Color Emoji', sans-serif" opacity=".22">🏛️</text>
+</svg>

@@ -1,0 +1,48 @@
+# =========================================================
+#  SIBORU — Sistem Booking Ruangan (IDB Bali)
+# =========================================================
+
+# --- Dependensi ---
+node_modules/
+jspm_packages/
+
+# --- Environment / rahasia ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Log & berkas sementara ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*.bak
+*.swp
+*~
+
+# --- Cache & hasil build ---
+.cache/
+.parcel-cache/
+dist/
+build/
+out/
+coverage/
+*.tsbuildinfo
+
+# --- OS & editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.suo
+*.user
+
+# --- Database lokal (SQLite dari server.js) ---
+*.sqlite
+*.sqlite3
+*.db

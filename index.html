@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masuk • SIBORU — Sistem Booking Ruangan IDB Bali</title>
+  <meta name="description" content="SIBORU (Sistem Booking Ruangan) IDB Bali — katalog ruangan, pengajuan peminjaman, persetujuan admin, dan struk digital untuk mahasiswa &amp; dosen Institut Desain &amp; Bisnis Bali." />
+  <meta name="keywords" content="SIBORU, Sistem Booking Ruangan, booking ruangan IDB Bali, peminjaman ruangan kampus, Institut Desain dan Bisnis Bali, IDB Bali" />
+  <meta name="author" content="Institut Desain &amp; Bisnis Bali" />
+  <meta name="application-name" content="SIBORU" />
+  <meta name="apple-mobile-web-app-title" content="SIBORU" />
+  <meta name="theme-color" content="#0b2545" />
+  <link rel="canonical" href="https://siboru.idbbali.ac.id/" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Open Graph / media sosial -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SIBORU" />
+  <meta property="og:title" content="SIBORU — Sistem Booking Ruangan IDB Bali" />
+  <meta property="og:description" content="Katalog ruangan, pengajuan peminjaman, persetujuan admin, dan struk digital dalam satu sistem untuk mahasiswa &amp; dosen IDB Bali." />
+  <meta property="og:url" content="https://siboru.idbbali.ac.id/" />
+  <meta property="og:image" content="https://siboru.idbbali.ac.id/images/hero-visit-kampus.jpg" />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SIBORU — Sistem Booking Ruangan IDB Bali" />
+  <meta name="twitter:description" content="Sistem Booking Ruangan IDB Bali: cari ruangan, ajukan peminjaman, pantau persetujuan, unduh struk." />
+  <meta name="twitter:image" content="https://siboru.idbbali.ac.id/images/hero-visit-kampus.jpg" />
+
+  <!-- Data terstruktur (Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SIBORU",
+    "alternateName": ["Sistem Booking Ruangan", "SIBORU IDB Bali"],
+    "url": "https://siboru.idbbali.ac.id/",
+    "description": "SIBORU (Sistem Booking Ruangan) adalah sistem peminjaman ruangan kampus Institut Desain & Bisnis Bali: katalog ruangan, pengajuan peminjaman, persetujuan admin, dan struk digital.",
+    "inLanguage": "id-ID",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "image": "https://siboru.idbbali.ac.id/images/hero-visit-kampus.jpg",
+    "publisher": {
+      "@type": "CollegeOrUniversity",
+      "name": "Institut Desain & Bisnis Bali",
+      "url": "https://www.idbbali.ac.id/"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/png" href="images/logo-idb-transparent.png" />
+  <link rel="apple-touch-icon" href="images/logo-idb.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="auth-body">
+
+  <!-- ============ LOGIN PAGE ============ -->
+  <main class="auth-shell">
+
+    <!-- Left: branding panel -->
+    <section class="auth-brand" aria-hidden="true">
+      <div class="auth-brand__overlay"></div>
+      <div class="auth-brand__content">
+        <div class="brand-mark">
+          <img class="brand-mark__logo-img" src="images/logo-idb.png" alt="Logo IDB Bali" />
+          <div class="brand-mark__text">
+            <strong>Institut Desain &amp; Bisnis</strong>
+            <span>Bali &bull; Campus Terpadu</span>
+          </div>
+        </div>
+
+        <h1 class="auth-brand__headline">
+          SIBORU<br /><em>Sistem Booking Ruangan</em>
+        </h1>
+        <p class="auth-brand__sub">
+          Portal resmi peminjaman ruangan Institut Desain &amp; Bisnis Bali &mdash;
+          akses laboratorium, studio, kelas, dan area publik kampus dalam satu sistem.
+        </p>
+
+        <ul class="auth-brand__features">
+          <li><span>&#10003;</span> Pemesanan ruangan real-time</li>
+          <li><span>&#10003;</span> Lab, Studio, Kelas &amp; GSG</li>
+          <li><span>&#10003;</span> Konfirmasi jadwal instan</li>
+        </ul>
+
+        <figure class="auth-brand__photo">
+          <img src="images/mahasiswa.jpg" alt="Mahasiswa IDB Bali" onerror="this.closest('figure').remove()" />
+          <figcaption>Mahasiswa IDB Bali</figcaption>
+        </figure>
+      </div>
+
+      <div class="auth-brand__footer">&copy; 2026 IDB Bali &mdash; SIBORU (Sistem Booking Ruangan)</div>
+    </section>
+
+    <!-- Right: form panel -->
+    <section class="auth-panel">
+      <div class="auth-panel__inner">
+
+        <div class="auth-mobile-brand">
+          <img class="brand-mark__logo-img brand-mark__logo-img--sm" src="images/logo-idb.png" alt="Logo IDB Bali" />
+          <div class="brand-mark__text">
+            <strong>SIBORU</strong>
+            <span>Sistem Booking Ruangan</span>
+          </div>
+        </div>
+
+        <!-- Hero tampilan awal: gambar fasilitas kampus + video singkat 3 detik -->
+        <figure class="auth-hero">
+          <img class="auth-hero__media" src="images/hero-tampilan-awal.png"
+               alt="Fasilitas Kampus Institut Desain &amp; Bisnis Bali" />
+          <video class="auth-hero__media auth-hero__video" src="media/hero-3detik.mp4"
+                 poster="images/hero-tampilan-awal.png" autoplay muted loop playsinline></video>
+          <figcaption class="auth-hero__caption">Fasilitas Kampus IDB Bali &bull; video 3 detik</figcaption>
+        </figure>
+
+        <header class="auth-heading">
+          <span class="auth-heading__eyebrow">Selamat datang di SIBORU</span>
+          <h2>Masuk ke Akun Anda</h2>
+          <p>Gunakan NIM / NIDN kampus untuk melanjutkan.</p>
+        </header>
+
+        <!-- Alert area for errors -->
+        <div id="loginAlert" class="form-alert" role="alert" aria-live="assertive" hidden>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="loginAlertText"></span>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          <div class="field">
+            <label for="nim">NIM / NIDN</label>
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input
+                type="text"
+                id="nim"
+                name="nim"
+                placeholder="Contoh: 2026001"
+                autocomplete="username"
+                inputmode="numeric"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field__label-row">
+              <label for="password">Password</label>
+              <a href="#" class="field__link" onclick="return false;">Lupa password?</a>
+            </div>
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Masukkan password"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="input-toggle" id="togglePassword" aria-label="Tampilkan password">
+                <svg id="eyeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" id="remember" />
+            <span>Ingat saya di perangkat ini</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block" id="loginBtn">
+            <span>Masuk</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Demo accounts for testing -->
+        <aside class="demo-box">
+          <div class="demo-box__title">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            <span>Akun Demo (klik untuk isi otomatis)</span>
+          </div>
+          <div class="demo-box__list">
+            <button type="button" class="demo-chip" data-nim="2026001" data-pass="password123">
+              <strong>Mahasiswa</strong>
+              <span>2026001 &bull; password123</span>
+            </button>
+            <button type="button" class="demo-chip" data-nim="2026002" data-pass="password123">
+              <strong>Dosen</strong>
+              <span>2026002 &bull; password123</span>
+            </button>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Hero video: bila video gagal dimuat/diputar, sembunyikan videonya
+    // sehingga gambar (poster) tetap tampil sebagai fallback.
+    (function () {
+      var vid = document.querySelector(".auth-hero__video");
+      if (!vid) return;
+      var fallback = function () {
+        if (vid.parentNode) vid.parentNode.removeChild(vid);
+      };
+      vid.addEventListener("error", fallback);
+      var played = vid.play();
+      if (played && typeof played.catch === "function") played.catch(fallback);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /_mobile-test.html
+
+# SIBORU — Sistem Booking Ruangan (IDB Bali)
+Sitemap: https://siboru.idbbali.ac.id/sitemap.xml

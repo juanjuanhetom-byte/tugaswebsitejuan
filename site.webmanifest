@@ -1,0 +1,26 @@
+{
+  "name": "SIBORU — Sistem Booking Ruangan",
+  "short_name": "SIBORU",
+  "description": "Sistem Booking Ruangan IDB Bali: katalog ruangan, pengajuan peminjaman, persetujuan admin, dan struk digital.",
+  "lang": "id",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b2545",
+  "theme_color": "#0b2545",
+  "icons": [
+    {
+      "src": "images/logo-idb.png",
+      "sizes": "350x350",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/logo-idb-transparent.png",
+      "sizes": "350x350",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pratinjau Mobile — SIBORU</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#071a33" />
+  <link rel="icon" type="image/png" href="https://centered-larch-nws3.here.now/images/logo-idb-transparent.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(900px 520px at 82% 8%, rgba(245, 166, 35, 0.22), transparent 62%),
+        radial-gradient(700px 460px at 5% 95%, rgba(26, 77, 143, 0.55), transparent 60%),
+        linear-gradient(150deg, #123a6b, #071a33 65%, #04101f);
+      display: flex; flex-direction: column; align-items: center;
+      padding: 18px 16px 24px; gap: 14px;
+    }
+    header { text-align: center; max-width: 640px; }
+    .brand { display: inline-flex; align-items: baseline; gap: 10px; }
+    .brand strong { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+    .brand span { font-size: 12.5px; color: rgba(255, 255, 255, 0.66); font-weight: 600; letter-spacing: 0.4px; }
+    header p { margin: 6px 0 0; font-size: 12.5px; line-height: 1.55; color: rgba(255, 255, 255, 0.66); }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center; }
+    .tab {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff; border-radius: 999px; padding: 7px 14px;
+      font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+    .tab:hover { background: rgba(255, 255, 255, 0.14); }
+    .tab.is-active { background: linear-gradient(120deg, #f5a623, #ffcc66); border-color: #f5a623; color: #071a33; }
+    .tab:active { transform: translateY(1px); }
+    .size { display: inline-flex; gap: 4px; padding: 3px; border-radius: 999px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.18); }
+    .size button {
+      border: 0; background: transparent; color: rgba(255, 255, 255, 0.7);
+      font: inherit; font-size: 11.5px; font-weight: 700; padding: 5px 10px; border-radius: 999px; cursor: pointer;
+    }
+    .size button.is-active { background: rgba(255, 255, 255, 0.18); color: #fff; }
+    .stage { flex: 1; position: relative; width: 100%; overflow: hidden; }
+    .phone {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 390px; height: 844px;
+      background: #0b1524;
+      border: 10px solid #101a29;
+      border-radius: 44px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--s, 0.62));
+      transform-origin: center center;
+    }
+    .phone::before {
+      content: ""; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 24px; background: #101a29; border-radius: 999px; z-index: 3;
+    }
+    .phone iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+    .hint { font-size: 11.5px; color: rgba(255, 255, 255, 0.5); text-align: center; }
+    @media (max-width: 760px) {
+      body { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><strong>SIBORU</strong><span>Sistem Booking Ruangan</span></div>
+    <p>Pratinjau tampilan ponsel (390 × 844). Aplikasi SIBORU adalah satu situs responsif — bingkai ini hanya untuk demonstrasi di laptop/PC.</p>
+  </header>
+
+  <div class="toolbar" id="tabs">
+    <button class="tab is-active" data-page="index.html">Login</button>
+    <button class="tab" data-page="catalog.html">Katalog Ruangan</button>
+    <button class="tab" data-page="admin.html">Panel Admin</button>
+    <span class="size" id="sizes">
+      <button data-size="390" class="is-active">390</button>
+      <button data-size="360">360</button>
+    </span>
+  </div>
+
+  <div class="stage">
+    <div class="phone" id="phone"><iframe id="fr" title="Pratinjau SIBORU" src="index.html"></iframe></div>
+  </div>
+
+  <p class="hint">Gulir &amp; klik langsung di dalam bingkai ponsel. Untuk HP asli, buka tautan aplikasi seperti biasa.</p>
+
+  <script>
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var SITE = q.get("site") || "https://centered-larch-nws3.here.now/";
+      var page = q.get("p") || "index.html";
+      var size = Number(q.get("w") || 390);
+      var phone = document.getElementById("phone");
+      var fr = document.getElementById("fr");
+
+      // Di ponsel asli: langsung buka aplikasi (bukan bingkai di dalam bingkai)
+      if (window.innerWidth < 760) { location.replace(SITE + "index.html"); return; }
+
+      function setPage(p, push) {
+        fr.src = SITE + p;
+        document.querySelectorAll("#tabs .tab").forEach(function (b) {
+          b.classList.toggle("is-active", b.dataset.page === p);
+        });
+        if (push) history.replaceState(null, "", "?p=" + encodeURIComponent(p) + "&w=" + size);
+      }
+
+      function setSize(w, push) {
+        size = w;
+        phone.style.width = w + "px";
+        phone.style.height = Math.round(w * 844 / 390) + "px";
+        document.querySelectorAll("#sizes button").forEach(function (b) {
+          b.classList.toggle("is-active", Number(b.dataset.size) === w);
+        });
+        fit();
+        if (push) history.replaceState(null, "", "?p=" + encodeURIComponent(page) + "&w=" + w);
+      }
+
+      function fit() {
+        var stage = document.querySelector(".stage");
+        var s = Math.min(
+          1,
+          (stage.clientHeight - 10) / phone.offsetHeight,
+          (stage.clientWidth - 10) / phone.offsetWidth
+        );
+        phone.style.setProperty("--s", Math.max(0.25, s));
+      }
+
+      document.getElementById("tabs").addEventListener("click", function (e) {
+        var b = e.target.closest("[data-page]");
+        if (!b) return;
+        page = b.dataset.page;
+        setPage(page, true);
+      });
+      document.getElementById("sizes").addEventListener("click", function (e) {
+        var b = e.target.closest("[data-size]");
+        if (!b) return;
+        setSize(Number(b.dataset.size), true);
+      });
+
+      setSize(size, false);
+      setPage(page === "index.html" ? "index.html" : page, false);
+      window.addEventListener("resize", fit);
+      window.addEventListener("load", fit);
+    })();
+  </script>
+</body>
+</html>

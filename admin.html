@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin • SIBORU — Sistem Booking Ruangan</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Panel admin SIBORU — kelola pengajuan peminjaman ruangan IDB Bali." />
+  <link rel="icon" type="image/png" href="images/logo-idb-transparent.png" />
+  <link rel="apple-touch-icon" href="images/logo-idb.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="admin-sidebar">
+      <a class="admin-brand" href="admin.html">
+        <img class="brand-mark__logo-img brand-mark__logo-img--sm" src="images/logo-idb.png" alt="Logo IDB Bali" />
+        <div class="brand-mark__text">
+          <strong>SIBORU</strong>
+          <span>Panel Admin</span>
+        </div>
+      </a>
+
+      <nav class="admin-nav" aria-label="Navigasi admin">
+        <button type="button" class="admin-nav__item is-active" data-view="dashboard">
+          <span class="admin-nav__icon">📊</span> Dashboard
+        </button>
+        <button type="button" class="admin-nav__item" data-view="bookings">
+          <span class="admin-nav__icon">🗓️</span> Pemesanan
+        </button>
+        <button type="button" class="admin-nav__item" data-view="rooms">
+          <span class="admin-nav__icon">🏫</span> Ruangan
+        </button>
+        <button type="button" class="admin-nav__item" data-view="users">
+          <span class="admin-nav__icon">👥</span> Pengguna
+        </button>
+      </nav>
+
+      <div class="admin-sidebar__foot">
+        <a class="btn btn--ghost btn--sm" href="catalog.html">Lihat Katalog</a>
+        <button type="button" class="btn btn--outline btn--sm" id="adminLogout">Keluar</button>
+      </div>
+    </aside>
+
+    <!-- ============ KONTEN UTAMA ============ -->
+    <main class="admin-main">
+
+      <header class="admin-topbar">
+        <div>
+          <span class="admin-eyebrow">SIBORU &middot; Sistem Booking Ruangan</span>
+          <h1 id="adminPageTitle">Dashboard</h1>
+        </div>
+        <div class="admin-topbar__right">
+          <span class="mode-badge" id="modeBadge">Memeriksa…</span>
+          <div class="user-chip">
+            <div class="user-chip__avatar" id="adminAvatar">A</div>
+            <div class="user-chip__info">
+              <strong id="adminName">—</strong>
+              <span class="role-badge" data-role="ADMIN">ADMIN</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===== VIEW: DASHBOARD ===== -->
+      <section class="admin-view" id="viewDashboard">
+        <div class="stat-grid">
+          <div class="stat-tile">
+            <span class="stat-tile__icon">🏫</span>
+            <strong id="statRooms">0</strong>
+            <span>Total Ruangan</span>
+          </div>
+          <div class="stat-tile">
+            <span class="stat-tile__icon">📅</span>
+            <strong id="statToday">0</strong>
+            <span>Booking Hari Ini</span>
+          </div>
+          <div class="stat-tile">
+            <span class="stat-tile__icon">🧾</span>
+            <strong id="statTotalBookings">0</strong>
+            <span>Total Pemesanan</span>
+          </div>
+          <div class="stat-tile stat-tile--pending">
+            <span class="stat-tile__icon">⏳</span>
+            <strong id="statPending">0</strong>
+            <span>Menunggu Persetujuan</span>
+          </div>
+          <div class="stat-tile stat-tile--approved">
+            <span class="stat-tile__icon">✅</span>
+            <strong id="statApproved">0</strong>
+            <span>Peminjaman Disetujui</span>
+          </div>
+          <div class="stat-tile stat-tile--rejected">
+            <span class="stat-tile__icon">❌</span>
+            <strong id="statRejected">0</strong>
+            <span>Pengajuan Ditolak</span>
+          </div>
+          <div class="stat-tile">
+            <span class="stat-tile__icon">🌤️</span>
+            <strong id="statWeekend">0</strong>
+            <span>Booking Akhir Pekan</span>
+          </div>
+          <div class="stat-tile">
+            <span class="stat-tile__icon">👥</span>
+            <strong id="statUsers">0</strong>
+            <span>Pengguna Terdaftar</span>
+          </div>
+          <div class="stat-tile">
+            <span class="stat-tile__icon">⭐</span>
+            <strong class="is-text" id="statTopRoom">—</strong>
+            <span>Ruangan Terfavorit</span>
+          </div>
+        </div>
+
+        <!-- Pintasan proses pengajuan (Task 5) -->
+        <div class="pending-box" id="pendingBox" hidden>
+          <div class="pending-box__info">
+            <span class="pending-box__icon">⏳</span>
+            <div>
+              <strong><span id="pendingCount">0</span> pengajuan menunggu persetujuan</strong>
+              <p id="pendingFirst">—</p>
+            </div>
+          </div>
+          <button type="button" class="btn btn--gold" id="pendingProcessBtn">Proses Pengajuan</button>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Booking Terbaru</h2>
+            <button type="button" class="btn btn--outline btn--sm" data-goto="bookings">Lihat Semua</button>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Tanggal</th>
+                  <th>Jam</th>
+                  <th>Ruang</th>
+                  <th>Atas Nama</th>
+                  <th>Pemesan</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentBookingsBody">
+                <tr><td colspan="7" class="admin-empty">Memuat…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== VIEW: PEMESANAN ===== -->
+      <section class="admin-view" id="viewBookings" hidden>
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Semua Pemesanan <span class="count-pill" id="bkCount">0</span></h2>
+            <div class="chip-row" id="bkChips">
+              <button type="button" class="f-chip is-active" data-scope="all">Semua</button>
+              <button type="button" class="f-chip" data-scope="today">Hari Ini</button>
+              <button type="button" class="f-chip" data-scope="upcoming">Mendatang</button>
+              <button type="button" class="f-chip" data-scope="weekend">Akhir Pekan</button>
+            </div>
+          </div>
+          <div class="chip-row chip-row--status" id="bkStatusChips">
+            <button type="button" class="f-chip is-active" data-bstatus="all">Semua Status</button>
+            <button type="button" class="f-chip f-chip--pending" data-bstatus="pending">⏳ Menunggu</button>
+            <button type="button" class="f-chip f-chip--approved" data-bstatus="approved">✅ Disetujui</button>
+            <button type="button" class="f-chip f-chip--rejected" data-bstatus="rejected">❌ Ditolak</button>
+          </div>
+          <div class="panel__toolbar">
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="search" id="bkSearch" placeholder="Cari ID, ruang, nama, keperluan…" aria-label="Cari pemesanan" />
+            </div>
+            <select id="bkRoom" aria-label="Filter ruangan">
+              <option value="">Semua Ruangan</option>
+            </select>
+            <input type="date" id="bkDate" aria-label="Filter tanggal" />
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Tanggal</th>
+                  <th>Jam</th>
+                  <th>Ruang</th>
+                  <th>Kepentingan</th>
+                  <th>Atas Nama</th>
+                  <th>Pemesan</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="bkBody">
+                <tr><td colspan="9" class="admin-empty">Memuat…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== VIEW: RUANGAN ===== -->
+      <section class="admin-view" id="viewRooms" hidden>
+        <div class="panel__head panel__head--plain">
+          <h2>Katalog Ruangan <span class="count-pill" id="rmCount">0</span></h2>
+          <button type="button" class="btn btn--gold" id="addRoomBtn">+ Tambah Ruangan</button>
+        </div>
+        <div class="admin-room-grid" id="roomGridAdmin"></div>
+      </section>
+
+      <!-- ===== VIEW: PENGGUNA ===== -->
+      <section class="admin-view" id="viewUsers" hidden>
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Daftar Pengguna <span class="count-pill" id="usrCount">0</span></h2>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>NIM / NIDN</th>
+                  <th>Nama Lengkap</th>
+                  <th>Peran</th>
+                  <th>Jumlah Pemesanan</th>
+                </tr>
+              </thead>
+              <tbody id="usrBody">
+                <tr><td colspan="4" class="admin-empty">Memuat…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ MODAL: TAMBAH / EDIT RUANGAN ============ -->
+  <div class="modal-backdrop" id="roomModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="roomModalTitle">
+      <header class="modal__head">
+        <div class="modal__room">
+          <span class="modal__room-icon" id="roomModalIcon">🏫</span>
+          <div class="modal__room-text">
+            <span class="modal__eyebrow">Data Ruangan</span>
+            <h3 id="roomModalTitle">Tambah Ruangan</h3>
+          </div>
+        </div>
+        <button type="button" class="modal__close" id="roomModalClose" aria-label="Tutup modal">✕</button>
+      </header>
+
+      <div class="modal__body">
+        <div class="form-alert" id="roomAlert" role="alert" hidden>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="roomAlertText"></span>
+        </div>
+
+        <form id="roomForm" novalidate>
+          <div class="bf-grid">
+            <div class="field">
+              <label for="rmName">Nama Ruangan *</label>
+              <input type="text" id="rmName" required placeholder="cth. Ruang Sidang" />
+            </div>
+            <div class="field">
+              <label for="rmId">Kode Ruangan *</label>
+              <input type="text" id="rmId" required placeholder="otomatis dari nama" />
+            </div>
+            <div class="field">
+              <label for="rmCategory">Kategori</label>
+              <select id="rmCategory">
+                <option value="Lab &amp; Studio">Lab &amp; Studio</option>
+                <option value="Classroom">Classroom</option>
+                <option value="Public Area">Public Area</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="rmCapacity">Kapasitas (orang) *</label>
+              <input type="number" id="rmCapacity" min="1" required placeholder="cth. 30" />
+            </div>
+            <div class="field">
+              <label for="rmIcon">Ikon (emoji)</label>
+              <input type="text" id="rmIcon" maxlength="4" placeholder="🏫" />
+            </div>
+            <div class="field">
+              <label for="rmImage">Path Foto</label>
+              <input type="text" id="rmImage" placeholder="images/nama-file.jpg" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="rmDesc">Deskripsi</label>
+            <textarea id="rmDesc" rows="2" placeholder="Deskripsi singkat fasilitas…"></textarea>
+          </div>
+
+          <label class="check-inline">
+            <input type="checkbox" id="rmWeekend" />
+            <span>Hanya bisa dipesan akhir pekan (Sabtu &amp; Minggu)</span>
+          </label>
+        </form>
+      </div>
+
+      <footer class="modal__foot">
+        <button type="button" class="btn btn--outline" id="roomCancel">Batal</button>
+        <button type="submit" form="roomForm" class="btn btn--gold" id="roomSave">Simpan Ruangan</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: DETAIL PENGAJUAN (Task 5) ============ -->
+  <div class="modal-backdrop" id="detailModal" hidden>
+    <div class="modal modal--md" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <header class="modal__head">
+        <div class="modal__room">
+          <span class="modal__room-icon" id="detailIcon">📋</span>
+          <div class="modal__room-text">
+            <span class="modal__eyebrow">Detail Pengajuan Peminjaman</span>
+            <h3 id="detailTitle">—</h3>
+            <span class="modal__room-sub" id="detailSub">—</span>
+          </div>
+        </div>
+        <button type="button" class="modal__close" id="detailClose" aria-label="Tutup modal">✕</button>
+      </header>
+
+      <div class="modal__body">
+        <div class="detail__status" id="detailStatus"></div>
+        <dl class="detail-grid" id="detailGrid"></dl>
+
+        <div class="field" id="detailReasonField" hidden>
+          <label for="detailReason">Alasan Penolakan (opsional)</label>
+          <input type="text" id="detailReason" placeholder="cth. Bersamaan dengan kegiatan rutin dosen" />
+        </div>
+
+        <p class="detail__note" id="detailNote" hidden></p>
+      </div>
+
+      <footer class="modal__foot" id="detailFoot">
+        <button type="button" class="btn btn--outline" id="detailDismiss">Tutup</button>
+        <button type="button" class="btn btn--danger" id="detailReject">Tolak Pengajuan</button>
+        <button type="button" class="btn btn--gold" id="detailApprove">Setujui Pengajuan</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: KONFIRMASI ============ -->
+  <div class="modal-backdrop" id="confirmModal" hidden>
+    <div class="modal modal--sm" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <header class="modal__head">
+        <div class="modal__room">
+          <span class="modal__room-icon">⚠️</span>
+          <div class="modal__room-text">
+            <span class="modal__eyebrow">Konfirmasi Tindakan</span>
+            <h3 id="confirmTitle">Yakin?</h3>
+          </div>
+        </div>
+      </header>
+      <div class="modal__body">
+        <p class="confirm-text" id="confirmText">—</p>
+      </div>
+      <footer class="modal__foot">
+        <button type="button" class="btn btn--outline" id="confirmCancel">Batal</button>
+        <button type="button" class="btn btn--danger" id="confirmOk">Ya, Hapus</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/rooms.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

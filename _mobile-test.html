@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Preview — SIBORU</title>
+  <style>
+    html, body { margin: 0; background: #0c1a2b; }
+    body { padding: 10px; font-family: system-ui, sans-serif; color: #fff; }
+    .wrap { width: 100%; }
+    .phone {
+      width: 390px; height: 844px;
+      border: 2px solid #1f3b5c; border-radius: 26px;
+      overflow: hidden; background: #fff;
+      transform-origin: top left;
+      transform: scale(var(--s, 0.6));
+    }
+    iframe { width: 390px; height: 844px; border: 0; display: block; }
+  </style>
+</head>
+<body>
+  <div class="wrap"><div class="phone" id="phone"><iframe id="fr"></iframe></div></div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const page = q.get("p") || "index.html";
+    const w = Number(q.get("w") || 390);
+    const h = Number(q.get("h") || 844);
+    const scale = Number(q.get("s") || 0.6);
+    const phone = document.getElementById("phone");
+    const fr = document.getElementById("fr");
+    phone.style.setProperty("--s", scale);
+    phone.style.width = w + "px";
+    phone.style.height = h + "px";
+    fr.style.width = w + "px";
+    fr.style.height = h + "px";
+    fr.src = page;
+  </script>
+</body>
+</html>
