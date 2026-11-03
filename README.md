@@ -360,14 +360,25 @@ Aplikasi dapat diakses dari ponsel dengan tata letak yang disesuaikan — bukan 
 
 ## Publikasi (here.now) & Agar Ditemukan di Google
 
-Versi statis proyek ini dapat dipublikasikan tanpa server:
+> **Status per 3 Nov 2026:** situs demo anonim di bawah sudah **kedaluwarsa** (here.now anonim hanya aktif 24 jam). Berkas proyek tetap lengkap dan siap diterbitkan ulang kapan saja — lihat *Menerbitkan ulang* di bawah.
 
 | Item | Nilai |
 | ---- | ----- |
-| URL sementara | https://centered-larch-nws3.here.now/ |
-| Jenis | Situs **anonim** here.now (aktif 24 jam, berakhir 28 Okt 2026 02.04 UTC) |
-| Klaim situs | https://here.now/c/W-BtnPRJXIkxhlJi |
+| URL demo (kedaluwarsa) | ~~https://centered-larch-nws3.here.now/~~ (27–28 Okt 2026) |
+| Jenis | Situs **anonim** here.now (aktif 24 jam) |
 | Domain final | **https://siboru.idbbali.ac.id/** — canonical, OG, JSON-LD, `sitemap.xml`, dan `robots.txt` sudah diarahkan ke domain ini |
+
+### Menerbitkan ulang (tanpa API key)
+
+```powershell
+# situs anonim baru (berlaku 24 jam) + tautan klaim baru
+.\tools\publish.ps1
+
+# atau perbarui situs milik akun here.now
+.\tools\publish.ps1 -ApiKey "<API_KEY_HERE_NOW>" -Slug "<slug-situs>"
+```
+
+Skrip otomatis menyertakan `google*.html` (berkas verifikasi Search Console) dan menjaga `canonical`/`sitemap`/`robots` tetap mengarah ke `siboru.idbbali.ac.id`.
 
 ### Mengaktifkan `siboru.idbbali.ac.id`
 
